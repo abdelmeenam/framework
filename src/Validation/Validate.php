@@ -27,7 +27,7 @@ class Validate
             } else {
 
                 Session::set('errors', $errors);
-                Session::set('oldData', Request::all());
+                Session::set('old', Request::all());
 
                 //back to the previous page
                 return Url::redirect(Url::previous());

@@ -57,7 +57,7 @@ if (!function_exists('dd')) {
 }
 
 if (!function_exists('session')) {
-    function session($key, $value)
+    function session($key)
     {
         return Phplite\Session\Session::get($key);
     }

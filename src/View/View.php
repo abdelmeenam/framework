@@ -35,7 +35,7 @@ class View
     public static function render($path, $data = [])
     {
         $errors = Session::flash('errors');
-        $old = Session::flash('errors');
+        $old = Session::flash('old');
         $data = array_merge($data, ['errors' => $errors, 'old' => $old]);
         return static::bladeRender($path, $data);
     }

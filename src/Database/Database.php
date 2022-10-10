@@ -11,7 +11,6 @@ use Phplite\Url\Url;
 
 class Database
 {
-
     protected static $instance;
     protected static $connection;
     protected static $query;
@@ -29,6 +28,11 @@ class Database
     protected static $having_binding = [];
     protected static $binding = [];
 
+
+    private function __construct($table)
+    {
+        static::$table = $table;
+    }
 
     private static function connect()
     {
@@ -56,8 +60,9 @@ class Database
     private static function instance()
     {
         static::connect();
+        $table = static::$table;
         if (!self::$instance) {
-            self::$instance = new Database;
+            self::$instance = new Database($table);
         }
         return self::$instance;
     }
@@ -359,7 +364,7 @@ class Database
         static::$instance;
         static::$query;
         static::$select;
-        // static::$table;
+        //static::$table;
         static::$join;
         static::$where;
         static::$group_by;
