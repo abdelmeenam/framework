@@ -135,7 +135,7 @@ class Route
     {
         foreach (explode('|', $route['middleware']) as $middleware) {
             if ($middleware != '') {
-                $middleware = 'App\Midlewares\\' . $middleware;
+                $middleware = 'App\Middlewares\\' . $middleware;
                 if (class_exists($middleware)) {
                     $object = new $middleware;  //object
                     call_user_func_array([$object, 'handle'], []);
